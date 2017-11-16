@@ -1,0 +1,320 @@
+body,html{
+  margin: 0;
+  padding: 0;
+}
+
+*{
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  -khtml-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+  -o-user-select:none;
+}
+
+html{
+  font-size: 16px;
+}
+
+.bannerBox{
+  width: 100%;
+  .banner{
+    width: 100%;
+    display: block;
+  }
+}
+
+.sickListBox{
+  overflow-y: scroll;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.sickList{
+  width: 100%;
+  height: 4.5rem;
+  border-bottom: 1px solid rgb(242,242,242);
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(60,67,80);
+}
+
+.fontColor{
+  color: rgb(253,77,97);
+}
+
+@keyframes divHeight {
+  from{
+    height: 0;
+  }to{
+     height: 4.5rem;
+   }
+}
+
+.chooseMap{
+  width: 100%;
+  height:4.5rem;
+  border-bottom: 1px solid rgb(242,242,242);
+  -webkit-animation:divHeight 0.3s linear;
+  -o-animation:divHeight 0.3s linear;
+  animation:divHeight 0.3s linear;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F6F6F7;
+  position: relative;
+  .triangle{
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    background-color: #F6F6F7;
+    top: -0.6rem;
+    left: 2rem;
+    transform: rotate(45deg);
+    border-left: 1px solid rgb(242,242,242);
+    border-top: 1px solid rgb(242,242,242);
+  }
+  .place{
+    color: rgb(60,67,80);
+    font-weight: 900;
+    .plz{
+      color: rgb(178,178,178);
+    }
+  }
+}
+
+.sOrH{
+  display: none;
+}
+
+.coverBox{
+  width: 100%;
+  height: 100%;
+  min-height: 568px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: rgba(91,91,91,0.8);
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: flex-end;
+  .cover{
+    width: 100%;
+    height: 47%;
+    background: #ffffff;
+    .cOrSBox{
+      width: 100%;
+      height: 18%;
+      //background-color: pink;
+      .cOrS{
+        width: 90%;
+        height: 100%;
+        //background-color: yellow;
+        border-bottom: 1px solid rgb(245,243,241);
+        margin: auto;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        justify-content: space-between;
+        .cancel{
+          height: 100%;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          align-items: center;
+          color: rgb(60,67,80);
+          -webkit-tap-highlight-color:transparent;
+          //background-color: red;
+        }
+        .sure{
+          height: 100%;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          align-items: center;
+          color: rgb(60,67,80);
+          -webkit-tap-highlight-color:transparent;
+          //background-color: red;
+        }
+      }
+    }
+    .placeBox{
+      width: 100%;
+      height: 82%;
+      //background-color: pink;
+      .provinceBox{
+        width: 45%;
+        height:100% ;
+        //background-color: yellow;
+        float: left;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        align-items: center;
+        .proBox{
+          width: 100%;
+          height: 90%;
+          //background-color: red;
+          overflow-y: scroll;
+          -webkit-tap-highlight-color:transparent;
+          .province{
+            height: 16.666%;
+            width: 100%;
+            //background-color: pink;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            -webkit-tap-highlight-color:transparent;
+            color: rgb(144,153,172);
+            font-size: 1.1rem;
+            font-weight: bold;
+          }
+        }
+      }
+      .lineBox{
+        height: 100%;
+        float: left;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        align-items: center;
+        .line{
+          height: 81%;
+          border-left: 1px solid rgb(245,243,241);
+        }
+      }
+      .cityBox{
+        width: calc(55% - 1px );
+        height: 100%;
+        //background-color: pink;
+        float: left;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        align-items: center;
+        .ciBox{
+          width: 100%;
+          height: 90%;
+          overflow-y: scroll;
+          -webkit-tap-highlight-color:transparent;
+          .city{
+            height: 16.666%;
+            width: 100%;
+            //background-color: pink;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            -webkit-tap-highlight-color:transparent;
+            color: rgb(144,153,172);
+          }
+          //background-color: greenyellow;
+        }
+      }
+    }
+  }
+}
+
+.next{
+  width: 100%;
+  height: 3.5rem;
+  background-color: rgb(46,184,114);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  line-height: 3.5rem;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 500;
+  display: none;
+}
+
+.provinceColor{
+  color: rgb(60,67,80)!important;
+}
+.oProvinceColor{
+  color: rgb(144,153,172)!important;
+}
+.cityColor{
+  color: rgb(60,67,80)!important;
+}
+.oCityColor{
+  color: rgb(144,153,172)!important;
+}
+.answerBox{
+  width: 100%;
+  height: 42px;
+  background-color: rgb(245,246,246);
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.answer{
+  width: calc(100% - 32px);
+  height: 20px;
+  //background-color: yellow;
+}
+.icon{
+  width: 20px;
+  height: 20px;
+  float: left;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .mg{
+    width: 16px;
+    height: 16px;
+  }
+}
+.ipt{
+  width: calc(100% - 30px);
+  height: 20px;
+  //background-color: pink;
+  -webkit-appearance: none;
+  outline: none;
+  border: none;
+  float: left;
+  padding-left: 10px;
+  background-color: rgb(245,246,246);
+  -webkit-tap-highlight-color: transparent;
+}

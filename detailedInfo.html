@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <meta name="format-detection" content="telphone=no"/>
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <title>找实验</title>
+    <link rel="stylesheet" href="css/detailedInfo.css">
+    <link rel="stylesheet" href="css/dropload.css">
+    <script src="js/jquery-2.1.0.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/dropload.js"></script>
+    <script src="crypto-js.js"></script>
+</head>
+<body>
+<header>
+    <div class="sickNameCon">
+        <div class="sickName"></div>
+    </div>
+    <div class="placeCon">
+        <div class="place"></div>
+    </div>
+</header>
+<div class="content">
+    <div class="first">
+        <div class="medicineNameTi">药物名称</div>
+        <input type="text" class="medicineNameBox">
+        <div class="inquire">查询</div>
+    </div>
+    <div class="second">
+        <div class="apply">申办者</div>
+        <input type="text" class="applyBox">
+        <div class="nbsp"></div>
+    </div>
+    <div class="third">
+        <div class="suit">适应症</div>
+        <input type="text" class="suitBox">
+        <div class="nbsp"></div>
+    </div>
+</div>
+
+<script type="text/html" id="template">
+    <div class="organization">
+        <div class="orzNameCon">
+            <div class="oraName">机构名称：</div>
+            <div class="oraZ">{{hospital}}</div>
+        </div>
+        <div class="mainCon">
+            <div class="mainer">主要研究者：</div>
+            <div class="main">{{investigator}}</div>
+        </div>
+        <div class="experimentCon">
+            <div class="experimentSta">实验状态：</div>
+            <div class="experiment">{{status}}</div>
+        </div>
+        <div class="alyCon">
+            <div class="alyEr">申办者：</div>
+            <div class="aly">{{apply}}</div>
+        </div>
+        <div class="telCon">
+            <div class="telP">联系电话：</div>
+            <div class="tel">{{mobile}}</div>
+        </div>
+    </div>
+</script>
+<div class="contentDrag">
+    <div class="lists">
+    </div>
+</div>
+<div id="top" class="opacity">
+    <img class="topImg" src="imgs/Top.png" alt="">
+</div>
+<script src="js/detailedInfo.js"></script>
+</body>
+</html>
