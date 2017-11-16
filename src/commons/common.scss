@@ -1,0 +1,41 @@
+* {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html {
+    color: rgb(60, 67, 80);
+    font-size: 14px;
+}
+
+input, textarea, button, select {
+    font-size: inherit;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: 100%;
+
+}
+
+ul, ol {
+    list-style: none;
+}
+
+.popup {
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background-color: #fff;
+}
+
+.flex1 {
+    flex: 1;
+}
+
+.flex {
+    display: flex;
+}

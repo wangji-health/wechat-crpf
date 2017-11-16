@@ -1,0 +1,48 @@
+.search-page {
+    .input-box {
+        height: 42px;
+        align-items: center;
+        display: flex;
+        background-color: #F6F6F7;
+        .search-icon {
+            margin-left: 18px;
+            padding-top: 7px;
+            img {
+                width: 16px;
+            }
+        }
+
+        .search-input {
+            flex: 1;
+            background: #F6F6F7;
+            color: #000;
+            input {
+                background: #F6F6F7;
+                width: 100%;
+                border: none;
+                outline: none;
+            }
+        }
+        .remove-icon {
+            margin-right: 10px;
+            padding-top: 5px;
+            img {
+                width: 18px;
+            }
+        }
+    }
+
+    .search-history {
+        margin-top: 40px;
+        padding-left: 20px;
+        background: #fff;
+        .search-history-list {
+            color: rgb(140, 149, 159);
+            margin-top: 20px;
+            padding-left: 10px;
+            .history-item {
+                padding: 10px;
+            }
+        }
+    }
+}
