@@ -34,7 +34,7 @@ const HighLight = (props: HighLightProps) => {
             {
               matches.map((m, index) => {
                 if (m == props.match) {
-                  return <span key={index} style={{color: '#f05050'}}>{props.match}</span>
+                  return <span key={index} className="red">{props.match}</span>
                 }
                 return m
               })

@@ -1,6 +1,9 @@
 /**
  * Created by jiangyukun on 2017/11/16.
  */
+import 'babel-polyfill'
+import 'isomorphic-fetch'
+
 import React from 'react'
 import {render} from 'react-dom'
 import {Provider} from 'react-redux'
@@ -9,7 +12,6 @@ import {createStore, applyMiddleware} from 'redux'
 
 import 'app-core/style/index.scss'
 import './commons/common.scss'
-import './containers/index/disease-index.scss'
 import './containers/index/disease-index1.scss'
 import './containers/search/search-page.scss'
 import './containers/institution/institution.scss'
@@ -25,7 +27,8 @@ import Search from './containers/search/Search'
 import Institution from './containers/institution/Institution'
 import LeaveMessage from './containers/message/LeaveMessage'
 
-const searchRecordList = JSON.parse(localStorage.getItem('search-list'))
+let searchRecordList = JSON.parse(localStorage.getItem('search-list')) || []
+searchRecordList = searchRecordList.filter(d => d != '' && d != null)
 
 const store = createStore(allReducers, {searchRecordList}, applyMiddleware(request_3_phase, search_to_storage))
 

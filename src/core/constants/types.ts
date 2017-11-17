@@ -16,10 +16,10 @@ export const APP = {
   FETCH_DISEASE_CATEGORY: null,
   ADD_SEARCH_RECORD: null,
   SEARCH_FROM_HISTORY: null,
+  CLEAR_SEARCH_KEY: null,
   FETCH_PROVINCE_CITY: null,
   FETCH_TRAIL_LIST: null,
   LEAVE_MESSAGE: null
 }
-
 
 generatorValueFromKey('APP', APP)

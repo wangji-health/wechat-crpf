@@ -22,6 +22,9 @@ export default function app(iState = fromJS(initValue), action) {
       let historyName = action.historyName
       nextIState = nextIState.set('diseaseSearchKey', historyName)
       break
+    case APP.CLEAR_SEARCH_KEY:
+      nextIState = nextIState.set('diseaseSearchKey', '')
+      break
   }
 
   nextIState = flagState(nextIState, action)

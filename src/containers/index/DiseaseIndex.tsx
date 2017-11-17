@@ -2,26 +2,23 @@
  * Created by jiangyukun on 2017/11/16.
  */
 import React from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
 import DiseaseCategory from './DiseaseCategory'
 import SelectProvinceCity from './SelectProvinceCity'
 
 import Data from '../../interfaces/Data'
-import {fetchDiseaseCategory} from '../../commons/app.action'
+import RouteComponent from '../../interfaces/RouteComponent'
+import {fetchDiseaseCategory, clearSearchKey} from '../../commons/app.action'
 
-interface DiseaseIndexProps {
+interface DiseaseIndexProps extends RouteComponent {
+  clearSearchKey: () => void
   fetchDiseaseCategory: () => void
   diseaseCategory: Data<any>
   diseaseSearchKey: string
 }
 
 class DiseaseIndex extends React.Component<DiseaseIndexProps> {
-  static contextTypes = {
-    router: PropTypes.any
-  }
-
   state = {
     categoryId: '',
     diseaseId: '',
@@ -29,7 +26,7 @@ class DiseaseIndex extends React.Component<DiseaseIndexProps> {
   }
 
   handleSearch = () => {
-    this.context.router.history.push('/search')
+    this.props.history.push('/search')
   }
   handleDiseaseChange = (categoryId, diseaseId) => {
     this.setState({categoryId, diseaseId})
@@ -42,7 +39,7 @@ class DiseaseIndex extends React.Component<DiseaseIndexProps> {
   render() {
     let diseaseCategory = this.props.diseaseCategory.data || []
     return (
-      <div className="index">
+      <div className="index-page">
         {
           this.state.showSelectCity && (
             <SelectProvinceCity
@@ -52,18 +49,23 @@ class DiseaseIndex extends React.Component<DiseaseIndexProps> {
             />
           )
         }
-        <div className="answerBox">
-          <div className="answer">
-            <div className="icon">
-              <img className="mg" src={require('../../imgs/magnifier.png')} alt=""/>
-            </div>
-            <input className="ipt"
-                   placeholder="输入关键词"
-                   type="search"
+        <div className="search-box">
+          <div className="search-icon">
+            <img src={require('../../imgs/magnifier.png')}/>
+          </div>
+          <div className="search-input">
+            <input type="search" placeholder="输入关键字"
                    onFocus={this.handleSearch}
-                   defaultValue={this.props.diseaseSearchKey}
+                   value={this.props.diseaseSearchKey} onChange={() => null}
             />
           </div>
+          {
+            this.props.diseaseSearchKey != '' && (
+              <div className="remove-icon" onClick={this.props.clearSearchKey}>
+                <img src={require('../../imgs/cha.png')}/>
+              </div>
+            )
+          }
         </div>
         <div className="bannerBox">
           <img className="banner" src={require('../../imgs/banner.png')}/>
@@ -99,4 +101,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {fetchDiseaseCategory})(DiseaseIndex)
+export default connect(mapStateToProps, {fetchDiseaseCategory, clearSearchKey})(DiseaseIndex)

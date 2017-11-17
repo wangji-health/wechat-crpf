@@ -32,9 +32,8 @@ module.exports = {
       {
         test: /\.js$/, loaders: ['babel-loader?cacheDirectory'],
         exclude: /node_modules/
-
       },
-      {test: /\.(ts|tsx)$/, loader: 'awesome-typescript-loader?useCache '},
+      {test: /\.(ts|tsx)$/, loaders: ['babel-loader?cacheDirectory', 'awesome-typescript-loader?useCache ']},
       {test: /\.less$/, loaders: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']},
       {
         test: /\.scss$/,

@@ -4,6 +4,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+
 import {APP} from '../../core/constants/types'
 
 interface SearchProps {
@@ -27,7 +28,9 @@ class Search extends React.Component<SearchProps> {
   }
 
   toSearch = () => {
-    this.props.dispatch({type: APP.ADD_SEARCH_RECORD, searchKey: this.state.searchKey})
+    if (this.state.searchKey != '') {
+      this.props.dispatch({type: APP.ADD_SEARCH_RECORD, searchKey: this.state.searchKey})
+    }
     this.context.router.history.goBack()
   }
 
@@ -48,15 +51,19 @@ class Search extends React.Component<SearchProps> {
                    value={this.state.searchKey} onChange={e => this.setState({searchKey: e.target.value})}
             />
           </div>
-          <div className="remove-icon" onClick={() => this.setState({searchKey: ''})}>
-            <img src={require('../../imgs/cha.png')}/>
-          </div>
+          {
+            this.state.searchKey != '' && (
+              <div className="remove-icon" onClick={() => this.setState({searchKey: ''})}>
+                <img src={require('../../imgs/cha.png')}/>
+              </div>
+            )
+          }
         </form>
         <section className="search-history">
           <header>搜索历史</header>
           <ul className="search-history-list">
             {
-              this.props.searchRecordList.map((item, index) => {
+              this.props.searchRecordList.reverse().map((item, index) => {
                 return (
                   <li key={index} className="history-item" onClick={() => this.search(item)}>{item}</li>
                 )
@@ -75,4 +82,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, null)(Search)
+export default connect(mapStateToProps)(Search)

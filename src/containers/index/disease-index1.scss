@@ -1,4 +1,18 @@
-.index {
+@import '../../commons/mixins/search-box';
+
+.index-page {
+    .search-box {
+        @include search-box;
+    }
+
+    .bannerBox {
+        width: 100%;
+        .banner {
+            width: 100%;
+            display: block;
+        }
+    }
+
     .disease-category-container {
         margin-bottom: 45px;
         .disease-category {
@@ -27,6 +41,9 @@
                     background-color: #F0F1F5;
 
                     &.selected {
+                        .red {
+                            color: #fff;
+                        }
                         background-color: #2EB872;
                         color: #fff;
                     }

@@ -1,13 +1,12 @@
 /**
  * Created by jiangyukun on 2017/11/16.
  */
-import $ from 'jquery'
-
 import {THREE_PHASE} from '../middlewares/request_3_phase'
 import {APP} from '../core/constants/types'
 import {_get, _post} from '../core/http'
 import getAes from './aes'
-import {host} from '../core/env'
+
+import data from './trail-list'
 
 export function fetchDiseaseCategory() {
   return {
@@ -29,12 +28,20 @@ export function fetchProvinceCity() {
   }
 }
 
-export function fetchTrailList(options) {
+// http: () => _post('/index.php/api/wechat/get_trials_detail?token=' + getAes(), {body: options, type: 'text'}),
+export function fetchTrailList(page, pageSize, options) {
   return {
     [THREE_PHASE]: {
       type: APP.FETCH_TRAIL_LIST,
-      http: () => _post('/index.php/api/wechat/get_trials_detail?token=' + getAes(), {body: options, type: 'text'}),
-      handleResponse: data => data
+      startParam: {page},
+      http: () => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => resolve(data), 1000)
+        })
+      },
+      handleResponse: data => ({
+        pageSize, list: data
+      })
     }
   }
 }
@@ -50,5 +57,11 @@ export function leaveMessage(content, contactInfo) {
       http: () => _post('/index.php/api/wechat/send_message?token=' + getAes(), {body: options, type: 'text'}),
       handleResponse: data => data
     }
+  }
+}
+
+export function clearSearchKey() {
+  return {
+    type: APP.CLEAR_SEARCH_KEY
   }
 }

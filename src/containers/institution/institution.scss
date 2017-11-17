@@ -46,8 +46,9 @@
         }
     }
     .trail-list {
-        padding: 25px 27px;
+        padding-top: 10px;
         .trail-item {
+            padding: 10px 27px;
             border-bottom: 1px solid rgb(231, 231, 231);
             &:last-child {
                 border-bottom: none;
@@ -57,7 +58,7 @@
                 font-weight: 600;
             }
             .trail-item-body {
-                padding: 6px 0;
+                padding: 8px 0;
 
                 .body-item {
                     margin-top: 6px;
@@ -84,5 +85,10 @@
             color: #fff;
             font-size: 16px;
         }
+    }
+    .loading-ui {
+        position: fixed;
+        top: 40%;
+        left: 45%;
     }
 }
