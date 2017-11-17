@@ -14,6 +14,7 @@ let allReducers = combineReducers({
   searchRecordList: wrapReducerState(searchRecordList),
   diseaseCategory: wrapReducerState(data(APP.FETCH_DISEASE_CATEGORY)),
   provinceCity: wrapReducerState(data(APP.FETCH_PROVINCE_CITY)),
+  trailList: wrapReducerState(data(APP.FETCH_TRAIL_LIST)),
 })
 
 export default allReducers

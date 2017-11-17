@@ -86,30 +86,22 @@ export let _patch = PATCH
 export let _delete = DELETE
 export let _head = HEAD
 
-export default {
-  get: GET,
-  post: POST,
-  put: PUT,
-  patch: PATCH,
-  delete: DELETE,
-  head: HEAD,
-}
-
 function _bodyParam(paramObj) {
   let paramUrl = ''
   let current = 0
   for (let param in paramObj) {
     if (paramObj.hasOwnProperty(param)) {
-      if (paramObj[param]) {
+      if (paramObj[param] != null) {
         let prefix = ''
         if (current++ == 0) {
           prefix = ''
         } else {
-          prefix = ','
+          prefix = '&'
         }
         paramUrl += prefix + param + '=' + paramObj[param]
       }
     }
   }
+  // paramUrl = '{' + paramUrl + '}'
   return encodeURI(paramUrl)
 }

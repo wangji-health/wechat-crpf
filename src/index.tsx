@@ -13,6 +13,7 @@ import './containers/index/disease-index.scss'
 import './containers/index/disease-index1.scss'
 import './containers/search/search-page.scss'
 import './containers/institution/institution.scss'
+import './containers/message/leave-message-page.scss'
 
 import DiseaseIndex from './containers/index/DiseaseIndex'
 
@@ -22,6 +23,7 @@ import search_to_storage from './middlewares/search_to_storage'
 import allReducers from './reducers/index.reducer'
 import Search from './containers/search/Search'
 import Institution from './containers/institution/Institution'
+import LeaveMessage from './containers/message/LeaveMessage'
 
 const searchRecordList = JSON.parse(localStorage.getItem('search-list'))
 
@@ -37,6 +39,7 @@ class Root extends React.Component<any> {
             <Route exact path="/index" component={DiseaseIndex}/>
             <Route exact path="/search" component={Search}/>
             <Route exact path="/institution/:categoryId/:diseaseId/:provinceId/:cityId" component={Institution}/>
+            <Route exact path="/leave-message" component={LeaveMessage}/>
           </div>
         </HashRouter>
       </Provider>

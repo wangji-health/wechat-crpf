@@ -3,9 +3,11 @@
  */
 import {fromJS} from 'immutable'
 import {APP} from '../core/constants/types'
+import {flagState} from './redux-helper'
 
 const initValue = {
-  diseaseSearchKey: ''
+  diseaseSearchKey: '',
+  leaveMessageSuccess: false
 }
 
 export default function app(iState = fromJS(initValue), action) {
@@ -21,6 +23,11 @@ export default function app(iState = fromJS(initValue), action) {
       nextIState = nextIState.set('diseaseSearchKey', historyName)
       break
   }
+
+  nextIState = flagState(nextIState, action)
+    .handle(APP.LEAVE_MESSAGE, 'leaveMessageSuccess')
+    .get()
+
 
   return nextIState
 }

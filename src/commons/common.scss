@@ -10,6 +10,9 @@ html {
 
 input, textarea, button, select {
     font-size: inherit;
+    box-shadow: none;
+    outline: none;
+    -webkit-appearance: none;
 }
 
 body, html {

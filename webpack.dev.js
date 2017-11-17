@@ -1,7 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
 
-
 const port = 3000
 
 module.exports = {
@@ -17,7 +16,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: 'http://192.168.18.82:' + port + '/static/'
+    publicPath: '/static/'
   },
   resolve: {
     extensions: ['.js', 'jsx', '.ts', '.tsx']

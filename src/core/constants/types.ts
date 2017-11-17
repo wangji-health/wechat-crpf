@@ -17,6 +17,8 @@ export const APP = {
   ADD_SEARCH_RECORD: null,
   SEARCH_FROM_HISTORY: null,
   FETCH_PROVINCE_CITY: null,
+  FETCH_TRAIL_LIST: null,
+  LEAVE_MESSAGE: null
 }
 
 
