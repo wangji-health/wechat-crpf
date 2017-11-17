@@ -46,3 +46,12 @@ ul, ol {
 .flex {
     display: flex;
 }
+
+//reset
+
+.checkbox-wrapper {
+    font-size: 14px !important;
+    .checkbox {
+        vertical-align: -2px !important;
+    }
+}

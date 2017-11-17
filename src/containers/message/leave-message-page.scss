@@ -25,7 +25,7 @@
                 background-color: #F6F6F7;
                 height: 70px;
                 width: 100%;
-                border: 1px solid #ddd;
+                border: 1px solid #eee;
             }
         }
     }
@@ -37,5 +37,17 @@
         button {
             @include bottom-button;
         }
+    }
+}
+
+.leave-message-confirm-dialog {
+    .success-message {
+        padding: 10px 30px;
+    }
+    button {
+        width: 100%;
+        display: block;
+        border: none;
+        color: #888;
     }
 }

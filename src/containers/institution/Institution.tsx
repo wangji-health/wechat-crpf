@@ -4,6 +4,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Spinner from 'app-core/common/Spinner'
+import CheckBox from 'app-core/checkbox/CheckBox'
+import CheckGroup from 'app-core/checkgroup/CheckGroup'
 
 import Data from '../../interfaces/Data'
 import RouteComponent from '../../interfaces/RouteComponent'
@@ -30,7 +32,9 @@ class Institution extends React.Component<InstitutionProps> {
   state = {
     medicineName: '',
     sponsor: '',
-    indication: ''
+    indication: '',
+    isUnderWay: false,
+    isComplete: false
   }
 
   fetchTrail = () => {
@@ -39,8 +43,10 @@ class Institution extends React.Component<InstitutionProps> {
       "pagesize": 10,
       "disease_id": this.categoryId,
       "indication_id": this.diseaseId,
-      /*"province_id": provinceId,
-      "city_id": cityId*/
+      /*"province_id": this.provinceId,
+      "city_id": this.cityId,*/
+      "drug_name": this.state.medicineName,
+      "sponsor_name": this.state.sponsor
     })
   }
 
@@ -104,10 +110,13 @@ class Institution extends React.Component<InstitutionProps> {
   render() {
     const diseaseCategory = this.props.diseaseCategory.data || []
     const provinceCity = this.props.provinceCity.data || []
-    let categoryName = '', provinceName = '', cityName = ''
-    let match = diseaseCategory.find(c => c['id'] == this.categoryId)
-    if (match) {
-      categoryName = match['name']
+    let diseaseName = '', provinceName = '', cityName = ''
+    let matchCategory = diseaseCategory.find(c => c['id'] == this.categoryId)
+    if (matchCategory) {
+      let matchDisease = matchCategory['indication'].find(d => d['indication_id'] == this.diseaseId)
+      if (matchDisease) {
+        diseaseName = matchDisease['indication_name']
+      }
     }
     if (this.provinceId) {
       let matchProvince = provinceCity.find(p => p['province_id'] == this.provinceId)
@@ -117,7 +126,6 @@ class Institution extends React.Component<InstitutionProps> {
           cityName = matchProvince.city.find(c => c['city_id'] == this.cityId)['city_name']
         }
       }
-
     }
 
     let list = this.props.trailList.list
@@ -125,22 +133,27 @@ class Institution extends React.Component<InstitutionProps> {
     return (
       <div className="institution-page">
         <div className="disease-and-area">
-          <div>{categoryName}</div>
+          <div>{diseaseName}</div>
           <div className="area">{provinceName}{cityName}</div>
         </div>
         <div className="search-box">
-          <div className="item medicine-name">
-            <label>药物名称</label>
-            <input value={this.state.medicineName} onChange={e => this.setState({medicineName: e.target.value})}/>
+          <div className="search-box-form">
+            <div className="item medicine-name">
+              <label>药物名称</label>
+              <input value={this.state.medicineName} onChange={e => this.setState({medicineName: e.target.value})}/>
+            </div>
+            <div className="item sponsor">
+              <label>申办者</label>
+              <input value={this.state.sponsor} onChange={e => this.setState({sponsor: e.target.value})}/>
+            </div>
+            <div className="item indication">
+              <label>实验状态</label>
+              <CheckBox checked={this.state.isUnderWay} onChange={v => this.setState({isUnderWay: v})}>进行中</CheckBox>
+              <CheckBox checked={this.state.isComplete} onChange={v => this.setState({isComplete: v})}>已完成</CheckBox>
+            </div>
+          </div>
+          <div className="search-btn-container">
             <button onClick={this.search}>查询</button>
-          </div>
-          <div className="item sponsor">
-            <label>申办者</label>
-            <input value={this.state.sponsor} onChange={e => this.setState({sponsor: e.target.value})}/>
-          </div>
-          <div className="item indication">
-            <label>适应症</label>
-            <input value={this.state.indication} onChange={e => this.setState({indication: e.target.value})}/>
           </div>
         </div>
 
@@ -159,6 +172,9 @@ class Institution extends React.Component<InstitutionProps> {
                 <div key={index} className="trail-item">
                   <header>{item['involved_name']}：</header>
                   <div className="trail-item-body">
+                    <div className="body-item">
+                      药物名称：{item['drug_name']}
+                    </div>
                     <div className="body-item">
                       主要研究者：{item['researcher_name']}
                     </div>

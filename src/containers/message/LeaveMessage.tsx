@@ -3,9 +3,11 @@
  */
 import React from 'react'
 import {connect} from 'react-redux'
+import Alert from 'app-core/common/Alert'
 
 import {leaveMessage} from '../../commons/app.action'
 import RouteComponent from '../../interfaces/RouteComponent'
+import LeaveMessageConfirm from './LeaveMessageConfirm'
 
 interface LeaveMessageProps extends RouteComponent {
   leaveMessage: (content, contactInfo) => void
@@ -15,23 +17,33 @@ interface LeaveMessageProps extends RouteComponent {
 class LeaveMessage extends React.Component<LeaveMessageProps> {
   state = {
     content: '',
-    contactInfo: ''
+    contactInfo: '',
+    showConfirm: false
   }
 
   confirm = () => {
     this.props.leaveMessage(this.state.content, this.state.contactInfo)
   }
 
+  handleConfirm = () => {
+    this.setState({showConfirm: false})
+    this.props.history.goBack()
+  }
+
   componentWillReceiveProps(nextProps: LeaveMessageProps) {
     if (!this.props.leaveMessageSuccess && nextProps.leaveMessageSuccess) {
-      alert('留言成功！')
-      this.props.history.goBack()
+      this.setState({showConfirm: true})
     }
   }
 
   render() {
     return (
       <div className="leave-message-page">
+        {
+          this.state.showConfirm && (
+            <LeaveMessageConfirm onExited={this.handleConfirm}/>
+          )
+        }
         <div className="message-input-item">
           <label>留言内容</label>
           <div className="message-content-container">

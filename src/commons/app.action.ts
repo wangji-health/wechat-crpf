@@ -34,11 +34,7 @@ export function fetchTrailList(page, pageSize, options) {
     [THREE_PHASE]: {
       type: APP.FETCH_TRAIL_LIST,
       startParam: {page},
-      http: () => {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => resolve(data), 1000)
-        })
-      },
+      http: () => _post('/index.php/api/wechat/get_trials_detail?token=' + getAes(), {body: options, type: 'text'}),
       handleResponse: data => ({
         pageSize, list: data
       })
