@@ -60,7 +60,7 @@
     .trail-list {
         padding-top: 10px;
         .trail-item {
-            padding: 10px 27px;
+            padding: 10px 10px 10px 27px;
             border-bottom: 1px solid rgb(231, 231, 231);
             &:last-child {
                 border-bottom: none;
@@ -73,7 +73,11 @@
                 padding: 8px 0;
 
                 .body-item {
+                    display: flex;
                     margin-top: 6px;
+                    div {
+                        flex: 1;
+                    }
                     &:first-child {
                         margin-top: 0;
                     }

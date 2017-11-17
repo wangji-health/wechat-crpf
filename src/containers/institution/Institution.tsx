@@ -173,19 +173,19 @@ class Institution extends React.Component<InstitutionProps> {
                   <header>{item['involved_name']}：</header>
                   <div className="trail-item-body">
                     <div className="body-item">
-                      药物名称：{item['drug_name']}
+                      药物名称：<div>{item['drug_name']}</div>
                     </div>
                     <div className="body-item">
-                      主要研究者：{item['researcher_name']}
+                      主要研究者：<div>{item['researcher_name']}</div>
                     </div>
                     <div className="body-item">
-                      试验状态：{item['sinfo']}
+                      试验状态：<div>{item['sinfo']}</div>
                     </div>
                     <div className="body-item">
-                      申办者：{item['sponsor_name']}
+                      申办者：<div>{item['sponsor_name']}</div>
                     </div>
                     <div className="body-item">
-                      联系电话：{item['contact_mobile']}
+                      联系电话：<div>{item['contact_mobile']}</div>
                     </div>
                   </div>
                 </div>
