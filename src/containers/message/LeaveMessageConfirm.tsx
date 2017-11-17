@@ -31,7 +31,7 @@ class LeaveMessageConfirm extends React.Component<LeaveMessageConfirmProps> {
         </Modal.Header>
         <Modal.Body>
           <div className="success-message">
-            感谢您的反馈我们将尽快处理您的意见如有必要将及时与您联系
+            感谢您的反馈，我们将尽快处理您的意见，如有必要将及时与您联系
           </div>
         </Modal.Body>
         <Modal.Footer>
