@@ -5,7 +5,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Spinner from 'app-core/common/Spinner'
 import CheckBox from 'app-core/checkbox/CheckBox'
-import CheckGroup from 'app-core/checkgroup/CheckGroup'
 
 import Data from '../../interfaces/Data'
 import RouteComponent from '../../interfaces/RouteComponent'
@@ -38,15 +37,24 @@ class Institution extends React.Component<InstitutionProps> {
   }
 
   fetchTrail = () => {
+    let status = null
+    if (this.state.isComplete && !this.state.isUnderWay) {
+      status = 1
+    }
+    if (this.state.isUnderWay && !this.state.isComplete) {
+      status = 2
+    }
+
     this.props.fetchTrailList(this.page, 10, {
-      "page": this.page,
-      "pagesize": 10,
-      "disease_id": this.categoryId,
-      "indication_id": this.diseaseId,
-      /*"province_id": this.provinceId,
-      "city_id": this.cityId,*/
-      "drug_name": this.state.medicineName,
-      "sponsor_name": this.state.sponsor
+      'page': this.page,
+      'pagesize': 10,
+      'disease_id': this.categoryId,
+      'indication_id': this.diseaseId,
+      'province_id': this.provinceId,
+      'city_id': this.cityId,
+      'drug_name': this.state.medicineName,
+      'sponsor_name': this.state.sponsor,
+      'trials_status': status
     })
   }
 
@@ -147,7 +155,7 @@ class Institution extends React.Component<InstitutionProps> {
               <input value={this.state.sponsor} onChange={e => this.setState({sponsor: e.target.value})}/>
             </div>
             <div className="item indication">
-              <label>实验状态</label>
+              <label>试验状态</label>
               <CheckBox checked={this.state.isUnderWay} onChange={v => this.setState({isUnderWay: v})}>进行中</CheckBox>
               <CheckBox checked={this.state.isComplete} onChange={v => this.setState({isComplete: v})}>已完成</CheckBox>
             </div>
@@ -173,19 +181,24 @@ class Institution extends React.Component<InstitutionProps> {
                   <header>{item['involved_name']}：</header>
                   <div className="trail-item-body">
                     <div className="body-item">
-                      药物名称：<div>{item['drug_name']}</div>
+                      药物名称：
+                      <div>{item['drug_name']}</div>
                     </div>
                     <div className="body-item">
-                      主要研究者：<div>{item['researcher_name']}</div>
+                      主要研究者：
+                      <div>{item['researcher_name']}</div>
                     </div>
                     <div className="body-item">
-                      试验状态：<div>{item['sinfo']}</div>
+                      试验状态：
+                      <div>{item['sinfo']}</div>
                     </div>
                     <div className="body-item">
-                      申办者：<div>{item['sponsor_name']}</div>
+                      申办者：
+                      <div>{item['sponsor_name']}</div>
                     </div>
                     <div className="body-item">
-                      联系电话：<div>{item['contact_mobile']}</div>
+                      联系电话：
+                      <div>{item['contact_mobile']}</div>
                     </div>
                   </div>
                 </div>
