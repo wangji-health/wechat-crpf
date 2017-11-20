@@ -28,8 +28,18 @@ class DiseaseIndex extends React.Component<DiseaseIndexProps> {
   handleSearch = () => {
     this.props.history.push('/search')
   }
+
   handleDiseaseChange = (categoryId, diseaseId) => {
     this.setState({categoryId, diseaseId})
+  }
+
+  handleCategoryOpen = (categoryId) => {
+    if (this.state.categoryId == categoryId) {
+      this.setState({categoryId: ''})
+    } else {
+      this.setState({categoryId})
+    }
+    this.setState({diseaseId: ''})
   }
 
   componentDidMount() {
@@ -74,11 +84,14 @@ class DiseaseIndex extends React.Component<DiseaseIndexProps> {
           {
             diseaseCategory.map(category => {
               return (
-                <DiseaseCategory key={category['id']}
-                                 category={category}
-                                 current={this.state.diseaseId}
-                                 onSelectDiseaseChange={(diseaseId) => this.handleDiseaseChange(category['id'], diseaseId)}
-                                 searchKey={this.props.diseaseSearchKey}
+                <DiseaseCategory
+                  key={category['id']}
+                  category={category}
+                  currentCategoryId={this.state.categoryId}
+                  currentDiseaseId={this.state.diseaseId}
+                  toggleOpen={this.handleCategoryOpen}
+                  onSelectDiseaseChange={(diseaseId) => this.handleDiseaseChange(category['id'], diseaseId)}
+                  searchKey={this.props.diseaseSearchKey}
                 />
               )
             })

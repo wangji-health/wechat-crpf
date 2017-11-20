@@ -3,36 +3,38 @@
  */
 import React from 'react'
 import classnames from 'classnames'
+
 import HighLight from '../../components/HighLight'
 
 interface DiseaseCategoryProps {
-  current: string
+  currentCategoryId: string
+  currentDiseaseId: string
+  toggleOpen: (categoryId) => void
   onSelectDiseaseChange: (diseaseId) => void
   category: any
   searchKey: string
 }
 
 class DiseaseCategory extends React.Component<DiseaseCategoryProps> {
-  state = {
-    open: false
-  }
-
   render() {
-    let {category, current} = this.props
+    const {category, currentDiseaseId} = this.props
+
+    const categoryId = category['']
     let diseaseList = category['indication'] || []
     if (this.props.searchKey) {
       diseaseList = diseaseList.filter(item => item['indication_name'].indexOf(this.props.searchKey) != -1)
     }
+    const isOpen = this.props.currentCategoryId == categoryId
     if (diseaseList.length == 0) {
       return null
     }
     return (
       <div className="disease-category">
-        <header className={classnames('disease-header', {'open': this.state.open})} onClick={() => this.setState({open: !this.state.open})}>
+        <header className={classnames('disease-header', {'open': isOpen})} onClick={() => this.props.toggleOpen(categoryId)}>
           {category['name']}
         </header>
         {
-          this.state.open && (
+          isOpen && (
             <div className="disease-body">
               {
                 diseaseList.map(disease => {
@@ -40,8 +42,8 @@ class DiseaseCategory extends React.Component<DiseaseCategoryProps> {
                   return (
                     <div
                       key={diseaseId}
-                      className={classnames('disease-item', {'selected': current == diseaseId})}
-                      onClick={() => this.props.onSelectDiseaseChange(current == diseaseId ? '' : diseaseId)}
+                      className={classnames('disease-item', {'selected': currentDiseaseId == diseaseId})}
+                      onClick={() => this.props.onSelectDiseaseChange(currentDiseaseId == diseaseId ? '' : diseaseId)}
                     >
                       <HighLight txt={disease['indication_name']} match={this.props.searchKey}/>
                     </div>

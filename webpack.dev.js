@@ -5,6 +5,7 @@ const port = 3000
 
 module.exports = {
   entry: [
+    'react-hot-loader/patch',
     'webpack-hot-middleware/client',
     './src/index.tsx'
   ],
@@ -30,10 +31,11 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/, loaders: ['babel-loader?cacheDirectory'],
-        exclude: /node_modules/
+        test: /\.(ts|tsx)$/,
+        loaders: ['react-hot-loader/webpack', {
+          loader: 'babel-loader?cacheDirectory'
+        }, 'awesome-typescript-loader?useCache']
       },
-      {test: /\.(ts|tsx)$/, loaders: ['babel-loader?cacheDirectory', 'awesome-typescript-loader?useCache']},
       {test: /\.less$/, loaders: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']},
       {
         test: /\.scss$/,
