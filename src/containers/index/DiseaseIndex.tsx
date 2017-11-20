@@ -98,7 +98,7 @@ class DiseaseIndex extends React.Component<DiseaseIndexProps> {
           }
         </div>
         {
-          this.state.diseaseId && (
+          (this.state.categoryId || this.state.diseaseId) && (
             <button className="next-step" onClick={() => this.setState({showSelectCity: true})}>下一步</button>
           )
         }

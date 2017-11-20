@@ -18,8 +18,7 @@ interface DiseaseCategoryProps {
 class DiseaseCategory extends React.Component<DiseaseCategoryProps> {
   render() {
     const {category, currentDiseaseId} = this.props
-
-    const categoryId = category['']
+    const categoryId = category['id']
     let diseaseList = category['indication'] || []
     if (this.props.searchKey) {
       diseaseList = diseaseList.filter(item => item['indication_name'].indexOf(this.props.searchKey) != -1)

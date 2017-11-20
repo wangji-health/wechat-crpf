@@ -16,13 +16,13 @@
     .disease-category-container {
         margin-bottom: 45px;
         .disease-category {
-            border-bottom: 1px solid #f9f9f9;
+            border-bottom: 1px solid rgba(200, 200, 200, .15);
             .disease-header {
                 padding: 14px 0;
                 text-align: center;
-                transition: all .5s;
+                transition: all .3s;
                 &.open {
-                    color: rgb(253, 77, 97);
+                    color: #2EB872;
                 }
             }
 
@@ -30,7 +30,7 @@
                 position: relative;
                 color: rgb(74, 74, 74);
                 background-color: #F6F6F7;
-                padding: 12px 7px;
+                padding: 14px 7px;
                 display: flex;
                 flex-wrap: wrap;
                 &:before {
@@ -45,7 +45,7 @@
                 }
                 .disease-item {
                     padding: 3px 10px 3px 10px;
-                    margin: 8px 0 0 10px;
+                    margin: 4px 0 4px 10px;
                     border: 1px solid #E8E9EC;
                     border-radius: 25px 25px;
                     background-color: #F0F1F5;

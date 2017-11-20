@@ -79,6 +79,7 @@ class Institution extends React.Component<InstitutionProps> {
   componentWillMount() {
     const {match} = this.props
     let {categoryId, diseaseId, provinceId, cityId} = match.params
+    if (diseaseId == 'null') diseaseId = ''
     if (provinceId == 'null') provinceId = ''
     if (cityId == 'null') cityId = ''
 
@@ -121,9 +122,13 @@ class Institution extends React.Component<InstitutionProps> {
     let diseaseName = '', provinceName = '', cityName = ''
     let matchCategory = diseaseCategory.find(c => c['id'] == this.categoryId)
     if (matchCategory) {
-      let matchDisease = matchCategory['indication'].find(d => d['indication_id'] == this.diseaseId)
-      if (matchDisease) {
-        diseaseName = matchDisease['indication_name']
+      if (!this.diseaseId) {
+        diseaseName = matchCategory['name']
+      } else {
+        let matchDisease = matchCategory['indication'].find(d => d['indication_id'] == this.diseaseId)
+        if (matchDisease) {
+          diseaseName = matchDisease['indication_name']
+        }
       }
     }
     if (this.provinceId) {

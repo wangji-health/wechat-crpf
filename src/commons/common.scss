@@ -5,7 +5,7 @@ html {
 
 html {
     color: rgb(60, 67, 80);
-    font-size: 14px;
+    font-size: 15px;
 }
 
 input, textarea, button, select {
@@ -48,7 +48,7 @@ ul, ol {
 //reset
 
 .checkbox-wrapper {
-    font-size: 14px !important;
+    font-size: inherit !important;
     .checkbox {
         vertical-align: -2px !important;
     }

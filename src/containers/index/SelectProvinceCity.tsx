@@ -36,8 +36,9 @@ class SelectProvinceCity extends React.Component<SelectProvinceCityProps> {
   }
 
   handleConfirm = () => {
-    const {categoryId, diseaseId} = this.props
+    let {categoryId, diseaseId} = this.props
     let {currentProvince, currentCity} = this.state
+    if (!diseaseId) diseaseId = 'null'
     if (!currentProvince) currentProvince = 'null'
     if (!currentCity) currentCity = 'null'
     this.close()
